@@ -6,6 +6,6 @@ import br.com.spring.banco.model.Pais;
 
 public interface PaisRepository extends CrudRepository<Pais, Long> {
 
-	@Query("SELECT p FROM Pais p WHERE p.nome LIKE %:nome%")
+	@Query("SELECT p FROM Pais p WHERE p.nome LIKE :nome%")
 	Iterable<Pais> findByNome(String nome);
 }
