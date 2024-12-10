@@ -1,7 +1,15 @@
 package com.spring.banco.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.spring.banco.model.Carro;
 import com.spring.banco.repository.CarroRepository;
 
@@ -30,6 +38,12 @@ public class CarroController {
 	@GetMapping("/nome/{nome}")
 	public Iterable<Carro> buscaCarroPorNome(@PathVariable String nome) {
 		return carroRepository.findByNome(nome);
+	}
+	
+	// Endpoint para buscar carro por nome
+	@GetMapping("/cor/{cor}")
+	public Iterable<Carro> buscaCarroPorCor(@PathVariable String cor) {
+		return carroRepository.findByCor(cor);
 	}
 
 	// Endpoint para adicionar um novo carro

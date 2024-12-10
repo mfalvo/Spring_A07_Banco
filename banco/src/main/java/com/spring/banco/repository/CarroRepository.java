@@ -2,6 +2,7 @@ package com.spring.banco.repository;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+
 import com.spring.banco.model.Carro;
 
 //Interface que estende (herança) CrudRepository para a entidade Carro
@@ -24,4 +25,7 @@ public interface CarroRepository extends CrudRepository<Carro, Long> {
 	// Define a consulta personalizada para encontrar carros pelo nome
     @Query("SELECT c FROM Carro c WHERE c.nome LIKE %:nome%")
 	Iterable<Carro> findByNome(String nome);
+    
+    @Query("SELECT c FROM Carro c WHERE c.cor LIKE %:cor%")
+    Iterable<Carro> findByCor(String cor);
 }
